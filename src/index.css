@@ -125,3 +125,18 @@
   }
 }
 
+/* Tailwind’s dark mode classes */
+html.dark {
+  background-color: #121212;
+  color: white;
+}
+
+/* Additional dark mode styles */
+html.dark .bg-black {
+  background-color: #333;
+}
+@layer utilities{
+  .grediaint-title{
+    @apply font-extrabold bg-gradient-to-b from-blue-500 via-blue-300 to-blue-400 bg-clip-text tracking-tighter text-transparent;
+  }
+}
