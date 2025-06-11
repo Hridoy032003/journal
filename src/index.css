@@ -1,6 +1,7 @@
 :root {
   font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
+    scrollbar-width: none;
  margin: 0;
  padding: 0;
   box-sizing: border-box;

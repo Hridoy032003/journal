@@ -1,27 +1,79 @@
 import { ArrowLeft } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
-
+import { Card } from "../components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Editor } from "react-draft-wysiwyg";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { Button } from "../components/ui/button";
+import { useUser } from "@clerk/clerk-react";
 const JournalEntery = () => {
+  const { user } = useUser();
+  const [title, setTitle] = useState("");
+  const [mood, setMood] = useState("");
+  const [content, setContent] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    const journalData = {
+      userId: user ? user.id : "guest", 
+      title,
+      mood,
+      content,
+      date: new Date().toISOString(),
+    };
+    localStorage.setItem("journalEntry", JSON.stringify(journalData));
+    alert("Journal entry saved to localStorage!");
+  };
+
   return (
     <>
-      <div className="p-10 ">
-        <Link
-          to="/dashboard"
-          className="flex gap-3 mb-5 text-lg items-center text-blue-300"
-        >
-          {" "}
-          <ArrowLeft /> Back to Dahboard
+      <div className="p-10">
+        <Link to="/dashboard" className="flex gap-3 mb-5 text-lg items-center text-blue-300">
+          <ArrowLeft /> Back to Dashboard
         </Link>
-        <h1 className="text-5xl md:6xl grediaint-title">
-          What's In Your Mind?
-        </h1>
-        <form action="" className="mt-5">
+        <h1 className="text-5xl md:6xl gradient-title">What's On Your Mind?</h1>
+        <form onSubmit={handleSubmit} className="mt-5">
           <div className="flex flex-col h-20 gap-2">
             <label className="text-lg">Title</label>
-           <Input placeholder="Enter Your Title here..."className='p-5'/>
+            <Input
+              placeholder="Enter Your Title here..."
+              className="p-5"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
+          <div className="flex flex-col h-20 gap-2 mt-5">
+            <label className="text-lg">Mood</label>
+            <Select value={mood} onValueChange={setMood}>
+              <SelectTrigger className="w-full p-5">
+                <SelectValue placeholder="Select Mood" className="text-lg" />
+              </SelectTrigger>
+              <SelectContent className="text-xl">
+                <SelectItem value="light">😁 - Happy</SelectItem>
+                <SelectItem value="dark">😭 - Sad</SelectItem>
+                <SelectItem value="angry">😡 - Angry</SelectItem>
+                <SelectItem value="bored">😒 - Bored</SelectItem>
+                <SelectItem value="confused">😕 - Confused</SelectItem>
+                <SelectItem value="love">❤️ - Love</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="h-100 w-full mt-5 gap-5">
+            <h1 className="text-lg">Write Down Below What You're Thinking</h1>
+            <Card className="mt-5 text-md h-80 overscroll-none">
+              <Editor
+                editorState={content}
+                onEditorStateChange={setContent}
+                placeholder="Write your thoughts here..."
+              />
+            </Card>
+          </div>
+          <Button type="submit" className="bg-blue-600 px-10 py-5 text-md hover:bg-blue-400 cursor-pointer">
+            Publish...
+          </Button>
         </form>
       </div>
     </>

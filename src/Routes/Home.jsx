@@ -66,7 +66,7 @@ const Home = () => {
         </div>
       </div>
       <div className="flex mt-8 p-4 justify-center  gap-4 ">
-        <Link to="/dashboard">
+        <Link to="/writeContent">
           <Button className="bg-blue-400 px-7 py-5 cursor-pointer hover:bg-blue-300 text-md font-medium">
             Start Writing
           </Button>
