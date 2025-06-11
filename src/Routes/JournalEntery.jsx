@@ -25,7 +25,8 @@ const JournalEntery = () => {
       date: new Date().toISOString(),
     };
     localStorage.setItem("journalEntry", JSON.stringify(journalData));
-    alert("Journal entry saved to localStorage!");
+   
+    alert(journalEntry);
   };
 
   return (

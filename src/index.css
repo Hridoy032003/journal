@@ -125,7 +125,9 @@
     @apply bg-background text-foreground;
   }
 }
-
+html{
+  scroll-behavior: smooth;
+}
 /* Tailwind’s dark mode classes */
 html.dark {
   background-color: #121212;

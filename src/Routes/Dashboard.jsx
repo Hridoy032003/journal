@@ -18,19 +18,13 @@ import { Button } from "../components/ui/button.js";
 
 const Dashboard = () => {
     const [journalEntries, setJournalEntries] = useState([]);
-try {
+
     useEffect(() => {
-        const journalDataString = localStorage.getItem("journalEntry");
-
-
-        let journalDataArray = JSON.parse(journalDataString);
-
-        setJournalEntries(journalDataArray);
+        const storedEntries = JSON.parse(localStorage.getItem("journalEntry")) ;
+        setJournalEntries(storedEntries);
     }, []);
     console.log(journalEntries)
-} catch (error) {
-    console.log(err)
-}
+
     
     
 
@@ -94,25 +88,23 @@ try {
                     <h1 className="text-2xl">Your Journals :-</h1>
                 </div>
 
-                {/* {journalEntries.forEach((data, index) => {
-                    journalCards.push(
-                        <Card key={index} className="h-60 w-110">
-                            <CardContent>
-                                <div className="flex justify-between items-center">
-                                    <h1 className="text-xl text-blue-300">{data.title}</h1>
-                                    <div className="flex gap-2">
-                                        <Button className="p-4 bg-blue-500 text-md hover:bg-blue-300 cursor-pointer">Edit</Button>
-                                        <Button className="p-4 bg-red-500 text-md hover:bg-red-300 cursor-pointer">Delete</Button>
-                                    </div>
+                {/* {journalEntries.map((data, index) => (
+                    <Card key={index} className="h-60 w-110">
+                        <CardContent>
+                            <div className="flex justify-between items-center">
+                                <h1 className="text-xl text-blue-300">{data.title}</h1>
+                                <div className="flex gap-2">
+                                    <Button className="p-4 bg-blue-500 text-md hover:bg-blue-300 cursor-pointer">Edit</Button>
+                                    <Button className="p-4 bg-red-500 text-md hover:bg-red-300 cursor-pointer">Delete</Button>
                                 </div>
-                                <div className="h-full mt-5 gap-5">
-                                    <p className="text-lg">Status: {data.mood}</p>
-                                    <p className="text-xl tracking-tight mt-4">"{data.content}"</p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    );})} */}
-                
+                            </div>
+                            <div className="h-full mt-5 gap-5">
+                                <p className="text-lg">Status: {data.mood}</p>
+                                <p className="text-xl tracking-tight mt-4">"{data.content}"</p>
+                            </div>
+                        </CardContent>
+                    </Card>
+                ))} */}
             </div>
         </div>
     );
