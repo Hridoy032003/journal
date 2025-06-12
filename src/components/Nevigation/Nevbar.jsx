@@ -10,10 +10,10 @@ const Nevbar = () => {
   return (
     <header className=''>
       <nav className="p-5 text-white flex justify-between  ">
-        <div className="text-xl text-black bold flex items-center gap-5 ml-20 "><img src="/image.png" alt="" className='h-15 w-15 object-cover' /><p className='text-blue-400 font-bold'>Happy Journal</p></div>
+        <div className="text-xl text-black bold flex items-center gap-5 ml-20 "><img src="/image.png" alt="" className='h-15 w-15 object-cover sm:hidden lg:block md:block' /><p className='text-blue-400 font-bold '>Happy Journal</p></div>
 
-        <div className='flex items-center w-90 gap-4 '>
-          <ModeToggle className='bg-grey-800 '/>
+        <div className='flex items-center w-80 gap-4 sm:justify-end sm:pr-10'>
+          <ModeToggle className='bg-grey-800 ' />
           <SignedIn>
             <Link to='/dashboard'>
               <Button className='bg-black text-white'>
@@ -28,7 +28,7 @@ const Nevbar = () => {
             </SignInButton>
           </SignedOut>
           <SignedIn>
-            <UserMenu/>
+            <UserMenu />
           </SignedIn>
 
 

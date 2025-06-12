@@ -4,29 +4,47 @@ import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Card } from "../components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { EditorState, convertToRaw } from "draft-js";  // Import necessary functions from Draft.js
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { Button } from "../components/ui/button";
 import { useUser } from "@clerk/clerk-react";
-const JournalEntery = () => {
+
+const JournalEntry = () => {
   const { user } = useUser();
   const [title, setTitle] = useState("");
   const [mood, setMood] = useState("");
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState(EditorState.createEmpty());  // Initialize with empty editor state
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
+    if (!user) {
+      alert("Please log in to save your journal entries.");
+      return;
+    }
+
+    // Convert the editor state to raw content
+    const rawContent = convertToRaw(content.getCurrentContent());
+
     const journalData = {
-      userId: user ? user.id : "guest", 
+      userId: user.id,
       title,
       mood,
-      content,
+      content: rawContent, 
       date: new Date().toISOString(),
     };
-    localStorage.setItem("journalEntry", JSON.stringify(journalData));
+
+    let userJournalEntries = JSON.parse(localStorage.getItem(`journalEntries_${user.id}`)) || [];
+    userJournalEntries.push(journalData);
+
    
-    alert(journalEntry);
+    localStorage.setItem(`journalEntries_${user.id}`, JSON.stringify(userJournalEntries));
+
+    alert("Your journal entry has been saved!");
+    setTitle("");
+    setMood("");
+    setContent(EditorState.createEmpty());  // Reset the editor state
   };
 
   return (
@@ -81,4 +99,4 @@ const JournalEntery = () => {
   );
 };
 
-export default JournalEntery;
+export default JournalEntry;
