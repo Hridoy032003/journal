@@ -1,40 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Card, CardContent, CardFooter, CardHeader } from "../components/ui/card";
-import Barchart from "../components/Barchart.jsx";
+import { Card, CardContent, CardHeader, CardFooter } from "../components/ui/card";
 import { NotebookPen } from "lucide-react";
-import { Button } from "../components/ui/button.js";
-import { useUser } from "@clerk/clerk-react"; // To get user information
-
+import { Button } from "../components/ui/button";
+import { useUser } from "@clerk/clerk-react";
+import { Link } from "react-router-dom";
+import { convertFromRaw } from 'draft-js';
+import { stateToHTML } from 'draft-js-export-html';
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '../components/ui/select'
+import Barchart from '../components/Barchart'
 const Dashboard = () => {
-    const { user } = useUser();  // Get the logged-in user
+    const { user } = useUser();
     const [journalEntries, setJournalEntries] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
-       
-        const fetchJournalEntries = async () => {
-            if (user) {
-                try {
-                    const response = await fetch(`/api/journalEntries?userId=${user.id}`);
-                    const data = await response.json();
-                    setJournalEntries(data);
-                    console.log(journalEntries)
-                } catch (err) {
-                    setError("Failed to fetch journal entries.");
-                } 
+        if (user) {
+            try {
+                const entries = JSON.parse(localStorage.getItem(`journalEntries_${user.id}`)) || [];
+                setJournalEntries(entries);
+                setLoading(false);
+            } catch (err) {
+                setError("Failed to load journal entries.");
+                setLoading(false);
+                console.error(err);
             }
-        };
-
-        fetchJournalEntries();
+        }
     }, [user]);
 
-
-
-    
-
-    console.log(user); // Log user data to check
+    const getContentAsHTML = (rawContent) => {
+        try {
+            const contentState = convertFromRaw(rawContent);
+            return stateToHTML(contentState);
+        } catch (e) {
+            console.error("Error converting content:", e);
+            return "<p>Content could not be displayed</p>";
+        }
+    };
 
     return (
         <div className="p-10">
@@ -90,40 +92,44 @@ const Dashboard = () => {
                 <Barchart />
             </div>
 
-            <div className="h-150 mt-30 p-5">
+            <div className="h-150 mt-30 p-5 mb-100">
                 <div className="flex gap-3 items-center mb-10">
                     <NotebookPen className="text-blue-500 h-8 w-8" />
                     <h1 className="text-2xl">Your Journals :-</h1>
                 </div>
-
                 {loading ? (
                     <p>Loading journal entries...</p>
                 ) : error ? (
-                    <p>{error}</p>
+                    <p className="text-red-500">{error}</p>
                 ) : journalEntries.length === 0 ? (
-                    <p>No journal entries found.</p>
+                    <p>No journal entries found. Create your first one!</p>
                 ) : (
-                    journalEntries.map((data, index) => (
-                        <Card key={index} className="h-60 w-110">
-                            <CardContent>
-                                <div className="flex justify-between items-center">
-                                    <h1 className="text-xl text-blue-300">{data.title}</h1>
-                                    <div className="flex gap-2">
-                                        <Button className="p-4 bg-blue-500 text-md hover:bg-blue-300 cursor-pointer">Edit</Button>
-                                        <Button
-                                            className="p-4 bg-red-500 text-md hover:bg-red-300 cursor-pointer"
-                                        >
-                                            Delete
-                                        </Button>
+                                <div className="space-y-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-10 justify-center grid mb-200 gap-8 mt-10">
+                        {journalEntries.map((data, index) => (
+                            <Card key={index} className="p-4  h-50">
+                                <CardContent>
+                                    <div className="flex justify-between items-center">
+                                        <h1 className="text-xl text-blue-300">{data.title}</h1>
+                                        <div className="flex gap-2">
+                                            <Button className="p-4 bg-blue-500 hover:bg-blue-300">
+                                                Edit
+                                            </Button>
+                                            <Button className="p-4 bg-red-500 hover:bg-red-300">
+                                                Delete
+                                            </Button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="h-full mt-5 gap-5">
-                                    <p className="text-lg">Status: {data.mood}</p>
-                                    <p className="text-xl tracking-tight mt-4">"{data.content}"</p>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    ))
+                                    <div className="mt-4">
+                                        <p className="text-lg">Mood: {data.mood}</p>
+                                        <div
+                                            className="mt-4 prose prose-sm max-w-none italic"
+                                            dangerouslySetInnerHTML={{ __html: getContentAsHTML(data.content) }}
+                                        />
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
                 )}
             </div>
         </div>
