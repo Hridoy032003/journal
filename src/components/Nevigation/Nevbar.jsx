@@ -29,7 +29,7 @@ const Nevbar = () => {
             </Button>
           </Link>
           <SignedOut>
-            <SignInButton forceRedirectUrl='/dashboard'>
+            <SignInButton forceRedirectUrl='/'>
               <Button>Log in</Button>
             </SignInButton>
           </SignedOut>
