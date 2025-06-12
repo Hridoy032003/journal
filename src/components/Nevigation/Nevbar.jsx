@@ -23,7 +23,7 @@ const Nevbar = () => {
             <Button className='bg-black text-white pr-10'>
               <PenBox /> <span className='hidden md:inline'>Write new </span></Button></Link>
           <SignedOut>
-            <SignInButton forceRedirectUrl='/dashboard'>
+            <SignInButton forceRedirectUrl='/'>
               <Button >Log in</Button>
             </SignInButton>
           </SignedOut>
