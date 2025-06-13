@@ -3,46 +3,75 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
 const data = [
     {
-        name: 'Page A',
-        uv: 800,
-        pv: 2400,
-        amt: 2400,
+        name: ' 1 month',
+        Happy: 1800,
+        Sad: 2600,
+        Angry: 2000,
+        Bored: 1400,
+        Confused: 1354,
+        Love: 2158,
+        amt:1254
+   
     },
     {
-        name: 'Page B',
-        uv: 3000,
-        pv: 1398,
-        amt: 2210,
+        name: '2 month',
+        Happy: 2654,
+        Sad: 1567,
+        Angry: 2546,
+        Bored: 2400,
+        Confused: 852,
+        Love: 697,
+        amt: 1247
     },
     {
-        name: 'Page C',
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
+        name: '3 month',
+        Happy: 1800,
+        Sad: 2100,
+        Angry: 2420,
+        Bored: 1400,
+        Confused: 1400,
+        Love: 2600,
+        amt: 1299
     },
     {
-        name: 'Page D',
-        uv: 2780,
-        pv: 3908,
-        amt: 2000,
+        name: '4 month',
+        Happy: 1860,
+        Sad: 2445,
+        Angry: 2524,
+        Bored: 2445,
+        Confused: 1564,
+        Love: 2564,
+        amt: 1299
     },
     {
-        name: 'Page E',
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
+        name: '5 month',
+        Happy: 2457,
+        Sad: 653,
+        Angry: 2155,
+        Bored: 2400,
+        Confused: 2400,
+        Love: 2400,
+        amt: 1299
     },
     {
-        name: 'Page F',
-        uv: 2390,
-        pv: 3800,
-        amt: 2500,
+        name: '6 month',
+        Happy: 800,
+        Sad: 2400,
+        Angry: 2400,
+        Bored: 2400,
+        Confused: 2400,
+        Love: 2400,
+        amt: 1299
     },
     {
-        name: 'Page G',
-        uv: 3490,
-        pv: 4300,
-        amt: 2100,
+        name: '7 month',
+        Happy: 800,
+        Sad: 2400,
+        Angry: 2400,
+        Bored: 2400,
+        Confused: 2400,
+        Love: 2400,
+        amt: 1299
     },
 ];
 
@@ -64,12 +93,16 @@ export default class Example extends PureComponent {
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
+                    <XAxis dataKey="name" className='mt-3'/>
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-                    <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                    <Line type="monotone" dataKey="Happy" stroke="#8884d8" activeDot={{ r: 8 }} />
+                    <Line type="monotone" dataKey="Sad" stroke="red" />
+                    <Line type="monotone" dataKey="Angry" stroke="blue" />
+                    <Line type="monotone" dataKey="Bored" stroke="green" />
+                    <Line type="monotone" dataKey="Confused" stroke="perple" />
+                    <Line type="monotone" dataKey="Love" stroke="grey" />
                 </LineChart>
             </ResponsiveContainer>
         );
