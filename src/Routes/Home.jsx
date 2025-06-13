@@ -28,7 +28,7 @@ const Home = () => {
     <div className="relative container mx-auto px-4 pb-16 pt-16 sm:px-2 lg:px-10 xs:bg-red-500">
       <div>
         <motion.h1
-          initial={{ y: 300, opacity: 0 }}
+          initial={{ y: 1300, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{
             duration: 0.6,
@@ -38,20 +38,43 @@ const Home = () => {
         >
           Your Space to Reflect <br /> Share your mood and story
         </motion.h1>
-        <p className="max-w-5xl space-y-8 text-center mx-auto text-xl sm:text-md mt-5">
+        <motion.p 
+          initial={{ y: 1300, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.7,
+          }}
+        className="max-w-5xl space-y-8 text-center mx-auto text-xl sm:text-md mt-5">
           Capture your thoughts, Track your mood, and see your happiness for a
           long duration with secure space.
-        </p>
+        </motion.p>
       </div>
 
       {/* Today's Entry Section */}
-      <div className="relative mt-10">
+      <motion.div className="relative mt-10"
+        initial={{ x: -1500, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{
+          duration: 0.6,
+          delay:0.6
+          
+        }}>
         <div className="absolute inset-0 bg-gradient-to-t from-blue-50 via-transparent to-transparent pointer-events-none z-10" />
         <div className="bg-white rounded-2xl p-4 max-full mx-auto mt-15">
           <div className="border-b border-blue-100 pb-4 flex justify-between items-center">
             <div className="flex items-center gap-2 ml-5">
               <Calendar className="h-5 w-5 text-blue-600" />
-              <span className="text-blue-900 font-medium">Today's Entry</span>
+              <motion.span 
+                initial={{ x: -1500, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+               
+                transition={{
+                  duration: 0.7,
+                  delay: 0.6
+
+               }}
+              className="text-blue-900 font-medium">Today's Entry</motion.span>
             </div>
             <div className="flex gap-2">
               <div className="h-3 w-3 rounded-full bg-blue-200" />
@@ -60,15 +83,24 @@ const Home = () => {
             </div>
           </div>
           <div className="flex flex-col text-center justify-center mt-5 gap-3 p-2">
-            <span className="text-blue-900 text-xl">
+            <motion.span
+              initial={{ x: -1500, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+           
+              transition={{
+                duration: 0.7,
+                delay: 0.6
+
+              }}
+             className="text-blue-900 text-xl">
               Today's quote that must align.
-            </span>
+            </motion.span>
             <Skeleton className="h-4 bg-blue-100 rounded w-3/4 sm:w-full" />
             <Skeleton className="h-4 bg-blue-100 rounded w-full sm:w-full" />
             <Skeleton className="h-4 bg-blue-100 rounded w-2/3 sm:w-full" />
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Action Buttons */}
       <div className="flex mt-8 p-4 justify-center gap-4 sm:flex-row sm:gap-6 lg:flex-row md:fex-row ">
