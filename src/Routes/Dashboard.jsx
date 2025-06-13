@@ -37,6 +37,28 @@ const Dashboard = () => {
             return "<p>Content could not be displayed</p>";
         }
     };
+    const calculateAverageMood = () => {
+        if (journalEntries.length === 0) return 'N/A';
+
+        const total = journalEntries.reduce((sum, entry) => {
+            const moodValue = parseFloat(entry.mood) || 0;
+            return sum + moodValue;
+        }, 0);
+
+        const average = (total / journalEntries.length).toFixed(1);
+        return `${average}/10`;
+    };
+
+    const getMoodSummary = () => {
+        if (journalEntries.length === 0) return "No entries to analyze";
+
+        const average = parseFloat(calculateAverageMood());
+
+        if (average < 4) return "😞 You've been feeling down";
+        if (average < 7) return "😐 You've been neutral";
+        return "😊 You've been positive";
+    };
+
 
     return (
         <div className="p-10">
@@ -71,7 +93,7 @@ const Dashboard = () => {
                         <CardHeader className="font-bold text-md text-black">
                             Average Mood
                         </CardHeader>
-                        <CardContent className="text-3xl font-bold text-black">7.5/10</CardContent>
+                        <CardContent className="text-3xl font-bold text-black">   {calculateAverageMood()}</CardContent>
                         <CardFooter className="text-sm text-gray text-gray-400">Overall mood source</CardFooter>
                     </div>
                 </Card>
@@ -81,7 +103,7 @@ const Dashboard = () => {
                             Mood Summary
                         </CardHeader>
                         <CardContent className="text-2xl font-bold text-black">
-                            😒 You are too lazy
+                            {getMoodSummary()}
                         </CardContent>
                     </div>
                 </Card>

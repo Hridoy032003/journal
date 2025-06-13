@@ -1,22 +1,43 @@
-
 import { Calendar } from "lucide-react";
 import { Skeleton } from "../components/ui/skeleton";
 import { Link } from "react-router-dom";
 import { Button } from "../components/ui/button";
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../components/ui/card";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
 import { Book, Sparkles, Lock, Notebook, BarChart2 } from "lucide-react";
 import { useEffect } from "react";
 import TestoMonialCarousal from "../components/TestoMonialCarousal";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import journals from '../Data/F&Q.json';
-import '../index.css';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import journals from "../Data/F&Q.json";
+import "../index.css";
+import { motion } from "motion/react";
 const Home = () => {
   return (
     <div className="relative container mx-auto px-4 pb-16 pt-16 sm:px-2 lg:px-10 xs:bg-red-500">
       <div>
-        <h1 className="max-w-5xl space-y-8 text-center mx-auto text-3xl sm:text-3xl lg:text-5xl gradient-title p-5">
+        <motion.h1
+          initial={{ y: 300, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.5,
+          }}
+          className="max-w-5xl space-y-8 text-center mx-auto text-4xl sm:text-3xl lg:text-5xl grediaint-title p-5"
+        >
           Your Space to Reflect <br /> Share your mood and story
-        </h1>
+        </motion.h1>
         <p className="max-w-5xl space-y-8 text-center mx-auto text-xl sm:text-md mt-5">
           Capture your thoughts, Track your mood, and see your happiness for a
           long duration with secure space.
@@ -70,11 +91,14 @@ const Home = () => {
             <CardTitle className="flex items-center gap-2">
               <Book className="text-blue-600 h-7 w-7" />
             </CardTitle>
-            <CardDescription className="text-md">Rich Text Editor</CardDescription>
+            <CardDescription className="text-md">
+              Rich Text Editor
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-blue-300 overflow-hide">
-              Express yourself and thoughts with us and write some good thoughts.
+              Express yourself and thoughts with us and write some good
+              thoughts.
             </p>
           </CardContent>
         </Card>
@@ -83,7 +107,9 @@ const Home = () => {
             <CardTitle className="flex items-center gap-2">
               <Sparkles className="text-blue-600 h-7 w-7" />
             </CardTitle>
-            <CardDescription className="text-md">Daily Inspiration</CardDescription>
+            <CardDescription className="text-md">
+              Daily Inspiration
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-blue-300">
@@ -96,11 +122,14 @@ const Home = () => {
             <CardTitle className="flex items-center gap-2">
               <Lock className="text-blue-600 h-7 w-7" />
             </CardTitle>
-            <CardDescription className="text-md">Secure & Private</CardDescription>
+            <CardDescription className="text-md">
+              Secure & Private
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-blue-300">
-              Your thoughts are safe with us. Be secure and write anything you want.
+              Your thoughts are safe with us. Be secure and write anything you
+              want.
             </p>
           </CardContent>
         </Card>
@@ -111,7 +140,9 @@ const Home = () => {
         <div className=" bg-card text-card-foreground flex flex-col gap-3 rounded-xl border py-6 shadow-sm px-6 sm:w-full lg:w-1/2 ">
           <Notebook className="text-blue-600 bg-blue-200 h-9 w-9 p-1 rounded-full hover:bg-blue-100" />
           <h1 className="text-xl text-blue-700">Rich Text Editor</h1>
-          <p className="text-blue-300">Express yourself with our powerful editor.</p>
+          <p className="text-blue-300">
+            Express yourself with our powerful editor.
+          </p>
           <div>
             <li className="decoration-blue-900">Format text with ease</li>
             <li>Find links</li>
@@ -138,7 +169,9 @@ const Home = () => {
         <div className="bg-card text-card-foreground flex flex-col gap-3 rounded-xl border py-6 shadow-sm px-6 sm:w-full lg:w-1/2">
           <BarChart2 className="text-blue-600 bg-blue-200 h-9 w-9 p-1 rounded-full hover:bg-blue-100" />
           <h1 className="text-xl text-blue-700">Mood Analytics</h1>
-          <p className="text-blue-300">Track your emotional journey throughout the year.</p>
+          <p className="text-blue-300">
+            Track your emotional journey throughout the year.
+          </p>
           <div>
             <li className="decoration-blue-900">Visual mood trends</li>
             <li>Pattern recognition</li>
@@ -151,12 +184,26 @@ const Home = () => {
 
       {/* FAQ Section */}
       <div className="flex flex-col mt-16 justify-center items-center sm:p-10">
-        <h1 className="text-blue-300 text-3xl text-center mb-10">Most Asked Questions</h1>
-        <Accordion type="single" collapsible className="w-full sm:w-11/12 lg:w-2/3">
+        <h1 className="text-blue-300 text-3xl text-center mb-10">
+          Most Asked Questions
+        </h1>
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full sm:w-11/12 lg:w-2/3"
+        >
           {journals.map((journal, index) => (
-            <AccordionItem key={journal.q} value={`item-${index}`} className="w-full sm:w-full p-3">
-              <AccordionTrigger className="text-lg">{journal.question}</AccordionTrigger>
-              <AccordionContent className="text-md">{journal.answer}</AccordionContent>
+            <AccordionItem
+              key={journal.q}
+              value={`item-${index}`}
+              className="w-full sm:w-full p-3"
+            >
+              <AccordionTrigger className="text-lg">
+                {journal.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-md">
+                {journal.answer}
+              </AccordionContent>
             </AccordionItem>
           ))}
         </Accordion>
@@ -168,9 +215,10 @@ const Home = () => {
           Let's Start Creating Something Unique with Us Today
         </CardHeader>
         <CardContent className="text-md -mt-5 text-black">
-          Join thousands of writers who have already joined us and discover many unique ideas.
+          Join thousands of writers who have already joined us and discover many
+          unique ideas.
         </CardContent>
-        <Link to='/dashboard'>
+        <Link to="/dashboard">
           <Button className="bg-blue-500 text-sm hover:bg-blue-200 animate-bounce mt-5">
             Get Started For Free &gt;
           </Button>
