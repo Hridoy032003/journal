@@ -44,7 +44,7 @@ const JournalEntry = () => {
     alert("Your journal entry has been saved!");
     setTitle("");
     setMood("");
-    setContent(EditorState.createEmpty());  // Reset the editor state
+    setContent(EditorState.createEmpty()); 
   };
 
   return (

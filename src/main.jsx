@@ -9,6 +9,7 @@ const PUBLISHABLE_KEY = "pk_test_YnJhdmUtYmF0LTcxLmNsZXJrLmFjY291bnRzLmRldiQ"
 
 if (!PUBLISHABLE_KEY) {
   throw new Error('Missing Publishable Key')
+  
 }
 
 createRoot(document.getElementById('root')).render(

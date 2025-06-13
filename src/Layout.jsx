@@ -12,7 +12,7 @@ const Layout = () => {
         
         <div className="flex flex-col min-h-screen  bg-cover bg-center bg-no-repeat opacity-100 flied -z-10">
          
-          <Nevbar className="bg-red-100" />
+          <Nevbar />
         
           <Outlet />
     
