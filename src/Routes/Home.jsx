@@ -25,7 +25,7 @@ import "../index.css";
 import { motion } from "motion/react";
 const Home = () => {
   return (
-    <div className="relative container mx-auto px-4 pb-16 pt-16 sm:px-2 lg:px-10 xs:bg-red-500">
+    <div className="relative container mx-auto px-4 pb-16 pt-16 sm:px-2 lg:px-10" >
       <div>
         <motion.h1
           initial={{ y: 1300, opacity: 0 }}
