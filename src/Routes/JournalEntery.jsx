@@ -23,7 +23,7 @@ const JournalEntry = () => {
       alert("Please log in to save your journal entries.");
       return;
     }
-
+ console.log(user)
     // Convert the editor state to raw content
     const rawContent = convertToRaw(content.getCurrentContent());
 

@@ -95,7 +95,7 @@ const Home = () => {
              className="text-blue-900 text-xl">
               Today's quote that must align.
             </motion.span>
-            <Skeleton className="h-4 bg-blue-100 rounded w-3/4 sm:w-full" />
+            <Skeleton className="h-4 bg-blue-100 rounded w-3/4 sm:w-full " />
             <Skeleton className="h-4 bg-blue-100 rounded w-full sm:w-full" />
             <Skeleton className="h-4 bg-blue-100 rounded w-2/3 sm:w-full" />
           </div>
