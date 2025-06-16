@@ -129,7 +129,7 @@ const Dashboard = () => {
                 </Card>
             </div>
 
-            <div className="bg-blue-100 h-130 p-10 w-full rounded-lg mt-10 md:">
+            <div className="bg-blue-100 h-130 p-10 w-full rounded-lg mt-10">
                 <h1 className="text-xl mb-3">Mood TimeLine</h1>
                 <Barchart />
             </div>
