@@ -14,7 +14,7 @@ const JournalEntry = () => {
   const { user } = useUser();
   const [title, setTitle] = useState("");
   const [mood, setMood] = useState("");
-  const [content, setContent] = useState(EditorState.createEmpty()); 
+  const [content, setContent] = useState(EditorState.createEmpty());  // Initialize with empty editor state
 
   const handleSubmit = (e) => {
     e.preventDefault();

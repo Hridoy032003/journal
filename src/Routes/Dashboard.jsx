@@ -58,6 +58,26 @@ const Dashboard = () => {
         if (average < 7) return "😐 You've been neutral";
         return "😊 You've been positive";
     };
+    const handleEdit = (index) => {
+        const updatedTitle = prompt("Enter new title:", journalEntries[index].title);
+        const updatedMood = prompt("Enter new mood:", journalEntries[index].mood);
+        const updatedContent = prompt("Enter new content:", journalEntries[index].content);
+
+        if (updatedTitle && updatedMood && updatedContent) {
+            const updatedEntries = [...journalEntries];
+            updatedEntries[index] = { ...updatedEntries[index], title: updatedTitle, mood: updatedMood, content: updatedContent };
+            setJournalEntries(updatedEntries);
+            localStorage.setItem(`journalEntries_${user.id}`, JSON.stringify(updatedEntries));
+        }
+    };
+
+    const handleDelete = (index) => {
+        const updatedEntries = [...journalEntries];
+        updatedEntries.splice(index, 1);
+        setJournalEntries(updatedEntries);
+        localStorage.setItem(`journalEntries_${user.id}`, JSON.stringify(updatedEntries));
+    };
+
 
 
     return (
@@ -133,10 +153,10 @@ const Dashboard = () => {
                                     <div className="flex justify-between items-center">
                                         <h1 className="text-xl text-blue-300">{data.title}</h1>
                                         <div className="flex gap-2">
-                                            <Button className="p-4 bg-blue-500 hover:bg-blue-300">
+                                            <Button className="p-4 bg-blue-500 hover:bg-blue-300" onClick={() => handleEdit(index)}>
                                                 Edit
                                             </Button>
-                                            <Button className="p-4 bg-red-500 hover:bg-red-300">
+                                            <Button className="p-4 bg-red-500 hover:bg-red-300" onClick={() => handleDelete(index)}>
                                                 Delete
                                             </Button>
                                         </div>

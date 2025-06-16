@@ -19,7 +19,7 @@ const Nevbar = () => {
           <SignedIn>
             <Link to='/dashboard'>
               <Button className='bg-black text-white'>
-                <FolderOpen /> <span className='hidden md:inline'>Collection</span>
+                <FolderOpen /> <span className='hidden md:inline '>Collection</span>
               </Button>
             </Link>
           </SignedIn>

@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/accordion";
 import journals from "../Data/F&Q.json";
 import "../index.css";
-import { motion } from "motion/react";
+import { easeInOut, motion } from "motion/react";
 const Home = () => {
   return (
     <div className="relative container mx-auto px-4 pb-16 pt-16 sm:px-2 lg:px-10" >
@@ -30,6 +30,7 @@ const Home = () => {
         <motion.h1
           initial={{ y: 1300, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
+          transform={{ easeInOut }}
           transition={{
             duration: 0.6,
             delay: 0.5,
@@ -41,6 +42,7 @@ const Home = () => {
         <motion.p 
           initial={{ y: 1300, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
+          transform={{ easeInOut }}
           transition={{
             duration: 0.6,
             delay: 0.7,
@@ -55,9 +57,11 @@ const Home = () => {
       <motion.div className="relative mt-10"
         initial={{ x: -1500, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
+        transform={{ easeInOut }}
         transition={{
           duration: 0.6,
           delay:0.6
+
           
         }}>
         <div className="absolute inset-0 bg-gradient-to-t from-blue-50 via-transparent to-transparent pointer-events-none z-10" />
@@ -68,6 +72,9 @@ const Home = () => {
               <motion.span 
                 initial={{ x: -1500, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
+                transform={{ easeInOut }}
+
+
                
                 transition={{
                   duration: 0.7,
@@ -86,7 +93,7 @@ const Home = () => {
             <motion.span
               initial={{ x: -1500, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-           
+            transform={{easeInOut}}
               transition={{
                 duration: 0.7,
                 delay: 0.6
