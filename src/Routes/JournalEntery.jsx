@@ -90,7 +90,7 @@ const JournalEntry = () => {
               />
             </Card>
           </div>
-          <Button type="submit" className="bg-blue-600 px-10 py-5 text-md hover:bg-blue-400 cursor-pointer">
+          <Button type="submit" className="bg-blue-600 px-10 py-5 text-md hover:bg-blue-400 cursor-pointer mt-5">
             Publish...
           </Button>
         </form>

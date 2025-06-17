@@ -175,7 +175,7 @@ const Home = () => {
       </div>
 
       {/* Editor Cards */}
-      <div className="flex  justify-between mt-20 p-10 w-full sm:flex-col sm:gap-6 lg:flex-row">
+      <div className="flex flex-col lg:flex md:flex  gap-5  justify-between mt-20 p-10 w-full sm:flex-col sm:gap-6 lg:flex-row">
         <div className=" bg-card text-card-foreground flex flex-col gap-3 rounded-xl border py-6 shadow-sm px-6 sm:w-full lg:w-1/2 ">
           <Notebook className="text-blue-600 bg-blue-200 h-9 w-9 p-1 rounded-full hover:bg-blue-100" />
           <h1 className="text-xl text-blue-700">Rich Text Editor</h1>
@@ -187,7 +187,7 @@ const Home = () => {
             <li>Find links</li>
           </div>
         </div>
-        <div className="w-200 text-card-foreground flex flex-col gap-5 rounded-xl border py-6 shadow-sm px-6 sm:w-full lg:w-1/2 bg-card">
+        <div className="lg:w-200  w-70  text-card-foreground flex flex-col gap-5 rounded-xl border py-6 shadow-sm px-6 sm:w-full  bg-card">
           <Skeleton className="h-4 bg-blue-100 rounded w-3/4 sm:w-full" />
           <Skeleton className="h-4 bg-blue-100 rounded w-full sm:w-full" />
           <Skeleton className="h-4 bg-blue-100 rounded w-2/4 sm:w-full" />
@@ -196,8 +196,8 @@ const Home = () => {
       </div>
 
       {/* Mood Analytics */}
-      <div className="flex  justify-between mt-20 p-10 w-full sm:flex-col sm:gap-6 lg:flex-row">
-        <div className="w-200 text-card-foreground flex flex-col gap-5 rounded-xl border py-6 shadow-sm px-6 sm:w-full lg:w-1/2 bg-card">
+      <div className="flex flex-col lg:flex md:flex  gap-5  justify-between mt-20 p-10 w-full sm:flex-col sm:gap-6 lg:flex-row">
+        <div className="w-200 text-card-foreground lg:flex sm:flex md:flex flex-col gap-5 rounded-xl border py-6 shadow-sm px-6 sm:w-full lg:w-1/2 bg-cardb hidden ">
           <Skeleton className="bg-blue-100 rounded h-40 w-full opacity-5" />
           <div className="flex justify-between">
             <Skeleton className="h-4 bg-blue-100 rounded w-1/5 opacity-5" />

@@ -82,8 +82,8 @@ const Dashboard = () => {
 
     return (
         <div className="p-10">
-            <div className="flex justify-between items-center sm:flex-col md:flex-row sm:gap-3 md:juas ">
-                <h1 className="text-3xl gradient-title ml-10 sm:ml-0">Dashboard</h1>
+            <div className="flex flex-col justify-center lg:justify-between lg:flex md:flex md:justify-between items-center sm:flex-col md:flex-row sm:gap-3 md:juas gap-3 ">
+                <h1 className="text-3xl gradient-title lg:ml-10 md:ml-10 sm:ml-0">Dashboard</h1>
                 <div>
                     <Select>
                         <SelectTrigger className="w-[180px]">
@@ -98,8 +98,8 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div className="mt-10 flex justify-between p-5 sm:flex-col md:flex-row sm:gap-5">
-                <Card className="w-140 h-33 bg-blue-100">
+            <div className="mt-10 flex flex-col lg:flex justify-between p-5 sm:flex-col md:flex-row sm:gap-5 gap-5 ">
+                <Card className="lg:w-140 md:w-140 h-33 bg-blue-100">
                     <div className="flex flex-col ml-5">
                         <CardHeader className="font-bold text-md text-black">
                             Total Entries
@@ -108,7 +108,7 @@ const Dashboard = () => {
                         <CardFooter className="text-sm text-gray text-gray-400">~min per day</CardFooter>
                     </div>
                 </Card>
-                <Card className="w-140 h-33 bg-blue-100">
+                <Card className="lg:w-140 md:w-140 h-33 bg-blue-100">
                     <div className="flex flex-col ml-5">
                         <CardHeader className="font-bold text-md text-black">
                             Average Mood
@@ -117,7 +117,7 @@ const Dashboard = () => {
                         <CardFooter className="text-sm text-gray text-gray-400">Overall mood source</CardFooter>
                     </div>
                 </Card>
-                <Card className="w-140 h-33 bg-blue-100">
+                <Card className="lg:w-140 md:w-140 h-33 bg-blue-100">
                     <div className="flex flex-col ml-5 gap-2">
                         <CardHeader className="font-bold text-md text-black">
                             Mood Summary
@@ -148,15 +148,15 @@ const Dashboard = () => {
                 ) : (
                                 <div className="space-y-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-10 justify-center grid mb-200 gap-8 mt-10">
                         {journalEntries.map((data, index) => (
-                            <Card key={index} className="p-4  h-50">
+                            <Card key={index} className="p-10 sm:p-4 md:p-4 lg:p-4 h-50">
                                 <CardContent>
-                                    <div className="flex justify-between items-center">
+                                    <div className="flex justify-between items-center gap-10">
                                         <h1 className="text-xl text-blue-300">{data.title}</h1>
                                         <div className="flex gap-2">
-                                            <Button className="p-4 bg-blue-500 hover:bg-blue-300" onClick={() => handleEdit(index)}>
+                                            <Button className="p-2 sm:p-4 md:p-4 lg:p-4  bg-blue-500 hover:bg-blue-300" onClick={() => handleEdit(index)}>
                                                 Edit
                                             </Button>
-                                            <Button className="p-4 bg-red-500 hover:bg-red-300" onClick={() => handleDelete(index)}>
+                                            <Button className="p-2 bg-red-500 hover:bg-red-300" onClick={() => handleDelete(index)}>
                                                 Delete
                                             </Button>
                                         </div>
