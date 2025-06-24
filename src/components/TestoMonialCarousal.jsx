@@ -33,7 +33,7 @@ const TestoMonialCarousal = () => {
                 <CarouselContent >
                    {quotes.map((quote, index) => (
                             <CarouselItem className='md:basis-1/2 lg:basis-1/3 '>
-                            <Card className='item-center flex flex-col justify-center p-10 h-50'>
+                           <Card className='cardMain'>
 
                                         <span className='flex-wrap h-25 text-blue-300 italic text-center text-lg items-start'>"{quote.quote}"</span>
                                         <p className='text-md mt-5 text-blue-100'> {quote.author}</p>

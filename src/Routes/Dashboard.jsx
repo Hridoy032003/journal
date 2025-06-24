@@ -99,27 +99,27 @@ const Dashboard = () => {
             </div>
 
             <div className="mt-10 flex flex-col lg:flex justify-between p-5 sm:flex-col md:flex-row sm:gap-5 gap-5 ">
-                <Card className="lg:w-140 md:w-140 h-33 bg-blue-100">
+                <Card className="lg:w-140 md:w-140 secondriCrad">
                     <div className="flex flex-col ml-5">
-                        <CardHeader className="font-bold text-md text-black">
+                        <CardHeader className="cardHearder tx-md">
                             Total Entries
                         </CardHeader>
                         <CardContent className="text-3xl font-bold text-black">{journalEntries.length}</CardContent>
                         <CardFooter className="text-sm text-gray text-gray-400">~min per day</CardFooter>
                     </div>
                 </Card>
-                <Card className="lg:w-140 md:w-140 h-33 bg-blue-100">
+                <Card className="lg:w-140 md:w-140 secondriCrad">
                     <div className="flex flex-col ml-5">
-                        <CardHeader className="font-bold text-md text-black">
+                        <CardHeader className=" text-md cardHearder">
                             Average Mood
                         </CardHeader>
                         <CardContent className="text-3xl font-bold text-black">   {calculateAverageMood()}</CardContent>
                         <CardFooter className="text-sm text-gray text-gray-400">Overall mood source</CardFooter>
                     </div>
                 </Card>
-                <Card className="lg:w-140 md:w-140 h-33 bg-blue-100">
+                <Card className="lg:w-140 md:w-140 secondriCrad">
                     <div className="flex flex-col ml-5 gap-2">
-                        <CardHeader className="font-bold text-md text-black">
+                        <CardHeader className=" text-md cardHearder">
                             Mood Summary
                         </CardHeader>
                         <CardContent className="text-2xl font-bold text-black">

@@ -53,8 +53,9 @@ const JournalEntry = () => {
         <Link to="/dashboard" className="flex gap-3 mb-5 text-lg items-center text-blue-300">
           <ArrowLeft /> Back to Dashboard
         </Link>
-        <h1 className="text-5xl md:6xl gradient-title">What's On Your Mind?</h1>
-        <form onSubmit={handleSubmit} className="mt-5">
+        
+        <form onSubmit={handleSubmit} className="mt-5 lg:px-150">
+          <h1 className="lg:text-2xl md:6xl gradient-title mb-10">What's On Your Mind?</h1>
           <div className="flex flex-col h-20 gap-2">
             <label className="text-lg">Title</label>
             <Input
@@ -90,7 +91,7 @@ const JournalEntry = () => {
               />
             </Card>
           </div>
-          <Button type="submit" className="bg-blue-600 px-10 py-5 text-md hover:bg-blue-400 cursor-pointer mt-5">
+          <Button type="submit" >
             Publish...
           </Button>
         </form>

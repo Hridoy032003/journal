@@ -112,12 +112,12 @@ const Home = () => {
       {/* Action Buttons */}
       <div className="flex mt-8 p-4 justify-center gap-4 sm:flex-row sm:gap-6 lg:flex-row md:fex-row ">
         <Link to="/writeContent">
-          <Button className="bg-blue-400 px-7 py-5 cursor-pointer hover:bg-blue-300 text-md font-medium sm:px-4 sm:py-3 w-full sm:w-auto">
+          <Button className="primButton">
             Start Writing
           </Button>
         </Link>
         <Link to="/about">
-          <Button className="border-blue-100 text-blue-600 hover:bg-blue-300 hover:text-black px-7 py-5 cursor-pointer text-md font-medium sm:px-4 sm:py-3 w-full sm:w-auto">
+          <Button className="secondButton">
             Learn More
           </Button>
         </Link>
@@ -125,7 +125,7 @@ const Home = () => {
 
       {/* Cards Section */}
       <div className="mt-20 grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8 justify-center items-center p-8">
-        <Card className="w-full gap-2 hover:scale-105 transition-transform duration-300 h-50 ">
+        <Card className="cardMain">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Book className="text-blue-600 h-7 w-7" />
@@ -141,7 +141,7 @@ const Home = () => {
             </p>
           </CardContent>
         </Card>
-        <Card className="w-full gap-2 hover:scale-105 transition-transform duration-300 h-50">
+        <Card className="cardMain">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Sparkles className="text-blue-600 h-7 w-7" />
@@ -156,7 +156,7 @@ const Home = () => {
             </p>
           </CardContent>
         </Card>
-        <Card className="w-full gap-2 hover:scale-105 transition-transform duration-300 h-50">
+        <Card className="cardMain">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Lock className="text-blue-600 h-7 w-7" />
@@ -249,7 +249,7 @@ const Home = () => {
       </div>
 
       {/* Call to Action */}
-      <Card className="bg-blue-100 text-center p-6 mt-16 gap-6">
+      <Card className="cardFooter">
         <CardHeader className="text-blue-900 text-3xl font-bold">
           Let's Start Creating Something Unique with Us Today
         </CardHeader>
